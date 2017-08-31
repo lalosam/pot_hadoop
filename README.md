@@ -4,7 +4,7 @@ Proof of Technologies on hadoop ecosystem
 
 **main-class:** com.rojosam.LoadActors
 
-##Generate messages:
+## Generate messages:
 
 **Example:** 10 700000 produce localhost:9092,localhost1:9092
 
@@ -13,7 +13,7 @@ Proof of Technologies on hadoop ecosystem
     3. Action: *produce* to send messages. 
     4. Kafka broker list.
 
-##Consume messages:
+## Consume messages:
 
 **Example:** 5 0 consume localhost:9092,localhost1:9092
 
