@@ -14,7 +14,7 @@ Implement a kafka producer and a kafka consumer to send and retrieve messages in
 
     1. Threads number to send messages in parallel (AKKA actors).
     2. Number of messages sended by thread.
-    3. Action: *produce* to send messages. 
+    3. Action: "produce" to send messages. 
     4. Kafka broker list.
 
 With this parameters you will send 7,000 (10 threads * 700 messages each one) total messages.
@@ -25,7 +25,7 @@ With this parameters you will send 7,000 (10 threads * 700 messages each one) to
 
     1. Threads number to consume messages in parallel (AKKA actors).
     2. <place holder> Not matter
-    3. Action: *consume* to retrieve messages. 
+    3. Action: "consume" to retrieve messages. 
     4. Kafka broker list.
 
 With this parameters you will instantiate 5 kafka consumers. If your topic has less number of partitions not all the threads will retrieve data in parallel, only one *consumer* by partition at the same time.

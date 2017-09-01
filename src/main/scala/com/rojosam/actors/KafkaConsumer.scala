@@ -26,7 +26,8 @@ class KafkaConsumer(id:Int, servers:String) extends Actor with ActorLogging{
       val threshold = 100000L
 
       log.warning(s"Starting consumer [$id]")
-      props.put("bootstrap.servers", servers)
+//      props.put("bootstrap.servers", servers)
+      props.put("zookeeper.connect", servers)
       props.put("group.id", "test")
       props.put("enable.auto.commit", "true")
       props.put("auto.commit.interval.ms", "1000")

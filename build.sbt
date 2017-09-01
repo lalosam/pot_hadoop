@@ -34,7 +34,9 @@ libraryDependencies ++= {
     "com.typesafe.akka"        %% "akka-slf4j"         % akkaVersion,
     "org.apache.logging.log4j" %  "log4j-core"         % log4jVersion,
     "org.apache.logging.log4j" %  "log4j-api"          % log4jVersion,
-    "org.apache.logging.log4j" %  "log4j-slf4j-impl"   % log4jVersion
+    "org.apache.logging.log4j" %  "log4j-slf4j-impl"   % log4jVersion,
+    "org.apache.flume"         %  "flume-ng-core"      % "1.6.0-cdh5.7.1",
+    "org.apache.flume"         %  "flume-ng-sdk"      % "1.6.0-cdh5.7.1"
   )
 }
 
