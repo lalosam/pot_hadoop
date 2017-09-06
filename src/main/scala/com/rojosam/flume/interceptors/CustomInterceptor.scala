@@ -2,24 +2,28 @@ package com.rojosam.flume.interceptors
 
 import java.util
 
+import scala.collection.JavaConverters._
+import com.rojosam.flume.utils.BuildEventString
 import org.apache.flume.interceptor.Interceptor
-import org.apache.flume.Event
+import org.apache.flume.{Context, Event}
 
 class CustomInterceptor extends Interceptor {
 
   override def intercept(event: Event):Event = {
+    event.setBody(BuildEventString.buildString(event).getBytes)
     event
   }
 
   override def intercept(events: util.List[Event]):util.List[Event] = {
-    events
+    events.asScala.map(e => intercept(e)).asJava
   }
 
   override def initialize():Unit = {
-
+    println("Initilizing CustomInterceptor")
   }
 
   override def close():Unit = {
-
+    println ("Closing CustomInterceptor")
   }
 }
+
