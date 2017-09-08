@@ -7,10 +7,10 @@ import com.rojosam.flume.utils.BuildEventString
 import org.apache.flume.interceptor.Interceptor
 import org.apache.flume.{Context, Event}
 
-class CustomInterceptor extends Interceptor {
+class CustomInterceptor(includeHeaders:Boolean, encloseBody:Boolean, dropHeadersList:Array[String]) extends Interceptor {
 
   override def intercept(event: Event):Event = {
-    event.setBody(BuildEventString.buildString(event).getBytes)
+    event.setBody(BuildEventString.buildString(event, includeHeaders, encloseBody).getBytes)
     event
   }
 
