@@ -38,6 +38,10 @@ object LoadActors {
         .optional()
         .valueName("<server:host,...>")
         .action((x,c) => c.copy(kafkaServers = x)).text("Kafka broker list")
+
+      help("help").text("prints this usage text")
+
+      note("\nReference kafka-flume project\n")
     }
 
 
