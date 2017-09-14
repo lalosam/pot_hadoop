@@ -22,6 +22,7 @@ libraryDependencies ++= {
   Seq(
     "org.apache.spark"         %% "spark-core"         % clouderaVersion  % "provided",
     "org.apache.spark"         %% "spark-sql"          % clouderaVersion % "provided",
+    "org.apache.spark"         %% "spark-hive"          % clouderaVersion % "provided",
     "com.holdenkarau"          %% "spark-testing-base" % "1.6.1_0.3.3",
     "org.apache.thrift"        %  "libthrift"          % "0.8.0",
     "com.twitter"              %% "scrooge-core"       % "4.6.0",
@@ -35,8 +36,10 @@ libraryDependencies ++= {
     "org.apache.logging.log4j" %  "log4j-core"         % log4jVersion,
     "org.apache.logging.log4j" %  "log4j-api"          % log4jVersion,
     "org.apache.logging.log4j" %  "log4j-slf4j-impl"   % log4jVersion,
-    "org.apache.flume"         %  "flume-ng-core"      % "1.6.0-cdh5.7.1",
-    "org.apache.flume"         %  "flume-ng-sdk"      % "1.6.0-cdh5.7.1"
+    "org.apache.flume"         %  "flume-ng-core"      % clouderaVersion,
+    "org.apache.flume"         %  "flume-ng-sdk"       % clouderaVersion,
+    "com.typesafe"             %  "config"             % "1.3.1",
+    "com.github.scopt"         %% "scopt"              % "3.7.0"
   )
 }
 

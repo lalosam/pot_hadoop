@@ -3,12 +3,10 @@ package com.rojosam.flume.interceptors
 import org.apache.flume.Context
 import org.apache.flume.interceptor.Interceptor.Builder
 
-
-class CustomInterceptorBuilder  extends Builder{
-
-  var includeHeaders:Boolean
-  var encloseBody:Boolean
-  var dropHeadersList:String
+object CustomInterceptorBuilder extends Builder{
+  var includeHeaders:Boolean=true
+  var encloseBody:Boolean=true
+  var dropHeadersList:String=""
 
   val includeHeadersDefault = true
   val encloseBodyDefault = true
