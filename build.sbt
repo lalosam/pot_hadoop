@@ -21,8 +21,8 @@ libraryDependencies ++= {
   val kafkaVersion      = "0.9.0-kafka-2.0.1"
   Seq(
     "org.apache.spark"         %% "spark-core"         % clouderaVersion  % "provided",
-    "org.apache.spark"         %% "spark-sql"          % clouderaVersion % "provided",
-    "org.apache.spark"         %% "spark-hive"          % clouderaVersion % "provided",
+    "org.apache.spark"         %% "spark-sql"          % clouderaVersion  % "provided",
+    "org.apache.spark"         %% "spark-hive"         % clouderaVersion  % "provided",
     "com.holdenkarau"          %% "spark-testing-base" % "1.6.1_0.3.3",
     "org.apache.thrift"        %  "libthrift"          % "0.8.0",
     "com.twitter"              %% "scrooge-core"       % "4.6.0",
@@ -57,4 +57,3 @@ assemblyMergeStrategy in assembly := {
 coverageEnabled.in(Test, test) := true
 
 test in assembly := {}
-        

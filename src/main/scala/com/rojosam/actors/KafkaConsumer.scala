@@ -4,9 +4,9 @@ import java.time.{Duration, Instant}
 import java.util.{Date, Properties}
 
 import akka.actor.{Actor, ActorLogging, Props}
-
 import java.util
 
+import com.rojosam.KafkaMain.Arguments
 
 import scala.language.implicitConversions
 import scala.collection.JavaConversions._
@@ -14,12 +14,12 @@ import scala.collection.JavaConversions._
 
 
 object KafkaConsumer {
-  def props(id:Int, servers:String):Props = Props(classOf[KafkaConsumer], id, servers)
+  def props(id:Int, arguments:Arguments):Props = Props(classOf[KafkaConsumer], id, arguments)
 }
 
-class KafkaConsumer(id:Int, servers:String) extends Actor with ActorLogging{
+class KafkaConsumer(id:Int, arguments: Arguments) extends Actor with ActorLogging{
   override def receive: Receive = {
-    case numEvents:Long => {
+    case _ => {
       var start = Instant.now
       val rnd = new scala.util.Random(255)
       val props = new Properties()
@@ -27,7 +27,7 @@ class KafkaConsumer(id:Int, servers:String) extends Actor with ActorLogging{
 
       log.warning(s"Starting consumer [$id]")
 //      props.put("bootstrap.servers", servers)
-      props.put("zookeeper.connect", servers)
+      props.put("zookeeper.connect", arguments.kafkaServers)
       props.put("group.id", "test")
       props.put("enable.auto.commit", "true")
       props.put("auto.commit.interval.ms", "1000")

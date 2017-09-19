@@ -10,16 +10,17 @@ import com.typesafe.config.ConfigFactory
 /**
   * Created by eduardo on 7/28/17.
   */
-object LoadActors {
+object KafkaMain {
 
-  case class Arguments(threads:Int = 1, numEvents:Long = 10, action:String="", kafkaServers:String="localhost:9092")
+  case class Arguments(threads:Int = 1, numEvents:Long = 10, action:String="", kafkaServers:String="localhost:9092",
+                       kafkaTopic:String="")
 
   def main(args: Array[String]): Unit = {
 
     val parser = new scopt.OptionParser[Arguments]("POT Kafka-Flume") {
       head("Kafka-Flume", "1.0")
 
-      opt[Int]('t', "threads")
+      opt[Int]('h', "threads")
         .optional()
         .valueName("<num>")
         .action((x,c) => c.copy(threads = x)).text("Number of threads to send/recive kafka messages")
@@ -39,6 +40,11 @@ object LoadActors {
         .valueName("<server:host,...>")
         .action((x,c) => c.copy(kafkaServers = x)).text("Kafka broker list")
 
+      opt[String]('t', "topic")
+        .required()
+        .valueName("<topic>")
+        .action((x,c) => c.copy(kafkaTopic = x)).text("Kafka Topic")
+
       help("help").text("prints this usage text")
 
       note("\nReference kafka-flume project\n")
@@ -57,7 +63,7 @@ object LoadActors {
     val config = ConfigFactory.load()
     val system: ActorSystem = ActorSystem("POT_Hadoop", config)
     try{
-      val coordinator = system.actorOf(Coordinator.props(arguments.threads, arguments.numEvents, arguments.kafkaServers))
+      val coordinator = system.actorOf(Coordinator.props(arguments))
       // Wait the actors system is up and ready
       Thread.sleep(3000)
       coordinator ! arguments.action
